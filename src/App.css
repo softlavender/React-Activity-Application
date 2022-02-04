@@ -1,10 +1,61 @@
 .App {
-  text-align: center;
+  min-height: 100vh;
+  background-color: #4441;
+  
+  display: grid;
+  grid-template: auto .59fr / .7fr;
+  grid-row-gap: 2rem;
+  align-content: center;
+  justify-content: center;
 }
   .App-header {
-    background-color: blanchedalmond;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #4444;
   }
+    .App-header h1 {
+      text-align: center;
+    }
+  
 
   .App-main {
-    background-color: cornflowerblue;
+    border-radius: 8px;
+    background-color: #7771;
+    box-shadow: 0px 0px 4px 0px #4448;
+    display: grid;
+
+    grid-template: auto repeat(2, 100px) / auto;
   }
+    #activities {
+      width: 80%;
+      align-self: center;
+      justify-self: center;
+    }
+      #activities h1 {
+        margin-bottom: 30px;
+      }
+      #activities p {
+        font-weight: bold;
+      }
+        #activities p span {
+          font-weight: normal;
+          color: #444;
+        }
+    
+    .activity-controls {
+      width: 80%;
+      justify-self: center;
+    }
+      .activity-controls button, select {
+        margin-top: 15px;
+        padding: 12px;
+        border: 2px solid #4448;
+        border-radius: 8px;
+        text-transform: capitalize;
+      }
+      .activity-controls label {
+        display: block;
+      }
+        .activity-controls label span {
+          font-style: italic;
+        }
