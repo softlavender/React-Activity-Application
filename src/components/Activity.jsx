@@ -1,15 +1,11 @@
 const Activity = ({activity, participants, type}) => {
-  console.log(activity);
-  console.log(participants);
-  console.log(type);
-  // variables/hooks
-
-  // render comp data
+  
   return (
     <>
-    <h1>Activity: {activity}</h1>
-    <h2>Participants: {participants}</h2>
-    <h3>Type: {type}</h3>
+    <h1>{activity}</h1>
+    <p>Activity: <span>{activity}</span></p>
+    <p>Participants: <span>{participants}</span></p>
+    <p>Type: <span>{type}</span></p>
     </>
   )
 }

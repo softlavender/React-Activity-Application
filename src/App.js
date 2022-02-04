@@ -4,70 +4,50 @@ import Activity from "./components/Activity";
 
 
 function App() {
-  // variables/hooks
-  let [activityNotice, setActivityNotice] = useState('Click the "Find Random Activity" button for an activity to do :)')
   const [myActivity, setMyActivity] = useState()
-  console.log(myActivity);
-
-  // functions
-  // console.log(e.target.previousElementSibling);
 
   const getActivity = async (wantedActivityAPI, e) => {
-    // +e.target.children[1].value !== 1 || +e.target.children[1].value !== 2 || +e.target.children[1].value !== 4
-
-    if (e.target.children[1]) {
-      let val = +e.target.children[1].value
-      console.log(val !==1);
-      if(val !== 1 || val !== 2 || val !== 3) {
-        console.log('failed');
-        setActivityNotice('Can only select 1, 2 or 4 participants')
-        setMyActivity()
-        console.log('failed');
-        return
-      }
-    }
-
-    // console.log(`${wantedActivityAPI + e.target.children[1].value}`);
-    console.log(wantedActivityAPI);
-
-    // const newActivityData = await fetch(e.target.children[1] ? `${wantedActivityAPI + '?participants=' + e.target.children[1].value}` : wantedActivityAPI)
-    // const newActivity = await newActivityData.json()
-    // setMyActivity(newActivity)
+    const newActivityData = await fetch(e.target.value ? `${wantedActivityAPI + '?participants=' + e.target.value}` : wantedActivityAPI)
+    const newActivity = await newActivityData.json()
+    setMyActivity(newActivity)
   }
   
   return (
     <div className="App">
       <header className="App-header">
-        Inlämningsuppgift 2 - Activity
+        <h1>Inlämningsuppgift 2 - Activity</h1>
       </header>
       
       <main className="App-main">
-        <button onClick={ e => getActivity('http://www.boredapi.com/api/activity/', e)}>Find Random Activity</button>
-
-        <form onSubmit={e => e.preventDefault(getActivity('http://www.boredapi.com/api/activity', e))}>
-          <label htmlFor='participants'>(Optional) Find random activity with 1, 2 or 4 participants</label>
-          <input id='participants' type='number' name='participants' placeholder='1, 2 or 4' />
-          <button>Ok</button>
-        </form>
-
         <section id='activities'>
-          {myActivity ? myActivity && <Activity {...myActivity}/> : <h1>{activityNotice}</h1>}
+          {myActivity ? myActivity && <Activity {...myActivity}/> : <h1>Click the "Find Activity" button for an random activity to do :)</h1>}
         </section>
+        
+
+        <div className='activity-controls'>
+          <label htmlFor='random-activity'>Find an <span>Activity</span> with any amount of participants</label>
+          <button id="random-activity" onClick={ e => getActivity('http://www.boredapi.com/api/activity/', e)}>
+            find activity
+          </button>
+        </div>
+
+        <div className='activity-controls specify-activity-participants'>
+          <form onChange={e => e.preventDefault(getActivity('http://www.boredapi.com/api/activity', e))}>
+            <label htmlFor='participants'>Find an <span>Activity</span> with 1, 2 or 4 participants</label>
+            <select name="participants" id='participants'>
+              {/* selected attributet ger ett varning i konsolen som jag inte kan lösa:
+                    * Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+              */}
+              <option selected disabled hidden>select participants</option>
+              <option value='1'>one</option>
+              <option value='2'>two</option>
+              <option value='4'>four</option>
+            </select>
+          </form>
+        </div>
       </main>
     </div>
   );
 }
 
 export default App;
-
-
-// loadMore = async () => {
-//   const { data } = await api.getAsync(this.nextUrl, null)
-//   this.nextUrl = data.next_url
-//   this.appendData(data)
-// }
-// api
-// http://www.boredapi.com/api/activity/
-
-// docs
-// https://www.boredapi.com/documentation
