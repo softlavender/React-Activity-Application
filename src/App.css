@@ -14,6 +14,7 @@
     box-shadow: 0px 0px 4px 0px #4444;
   }
     .App-header h1 {
+      font-weight: 400;
       text-align: center;
     }
   
@@ -24,7 +25,7 @@
     box-shadow: 0px 0px 4px 0px #4448;
     display: grid;
 
-    grid-template: auto repeat(2, 100px) / auto;
+    grid-template: auto 180px / auto;
   }
     #activities {
       width: 80%;
@@ -33,29 +34,34 @@
     }
       #activities h1 {
         margin-bottom: 30px;
+        font-weight: 400;
       }
+        #activities h1 span {
+          font-weight: 600;
+        }
+
       #activities p {
-        font-weight: bold;
+        font-weight: 600;
       }
         #activities p span {
           font-weight: normal;
-          color: #444;
+          color: #0008;
         }
     
-    .activity-controls {
+    #activity-controls {
       width: 80%;
       justify-self: center;
     }
-      .activity-controls button, select {
+      #activity-controls button, select {
         margin-top: 15px;
         padding: 12px;
         border: 2px solid #4448;
         border-radius: 8px;
         text-transform: capitalize;
       }
-      .activity-controls label {
+      #activity-controls label {
         display: block;
       }
-        .activity-controls label span {
+        #activity-controls label span {
           font-style: italic;
         }
